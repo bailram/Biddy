@@ -23,5 +23,9 @@ class M_login extends CI_Model
             return false;
         }
     }
+
+    function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
 }
 

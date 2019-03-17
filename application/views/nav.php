@@ -25,7 +25,7 @@
          }
       if($this->session->userdata('role') == 1){
           echo'  <li class="nav-item">
-          <a class="nav-link"href="'.base_url('login/logout').'">Admin</a>
+          <a class="nav-link"href="'.base_url('admin').'">Admin</a>
           </li>';
       }  
       ?>
