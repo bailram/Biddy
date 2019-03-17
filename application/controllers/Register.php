@@ -6,6 +6,7 @@
     
         public function index()
         {
+            $this->load->view('nav');
             $this->load->view('register/index.php');
             
         }

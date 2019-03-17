@@ -21,7 +21,8 @@
 </head>
 <body>
     <?php
-        include_once('register_content.php');
+       
+       
     ?>
     
 </body>

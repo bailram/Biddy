@@ -7,11 +7,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?=base_url()?>">Home <span class="sr-only">(current)</span></a>
       </li>
+     
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
       </li>
+      <?php 
+      if($this->session->userdata('status') == "login"){
+          echo'  <li class="nav-item">
+          <a class="nav-link"href="'.base_url('login/logout').'">Logout</a>
+        </li>';
+         }else{
+          echo'  <li class="nav-item">
+          <a class="nav-link"href="'.base_url('login').'">Login</a>
+        </li>';
+         }
+      if($this->session->userdata('role') == 1){
+          echo'  <li class="nav-item">
+          <a class="nav-link"href="'.base_url('login/logout').'">Admin</a>
+          </li>';
+      }  
+      ?>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

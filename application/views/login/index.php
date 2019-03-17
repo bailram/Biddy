@@ -21,7 +21,6 @@
 </head>
 <body>
     <?php
-        include_once('login_navbar.php');
         include_once('login_content.php');
     ?>
     
