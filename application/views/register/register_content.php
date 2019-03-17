@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-6">
         <div class="card">
-            <h5 class="card-header">Login</h5>
+            <h5 class="card-header">Register</h5>
             <div class="card-body">
                 <form>
                     <div class="input-group mb-3">
@@ -13,6 +13,7 @@
                         </div>
                         <input type="text" title="username" class="form-control login-input" placeholder="username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                     </div>
+                    
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-key"></i></span>
@@ -21,8 +22,8 @@
                     </div>
                   
                    
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <a class="forgot" href="<?php echo site_url('/register') ?>"style="float:right;">Register here</a>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a class="forgot" href="<?php echo site_url('/login') ?>"style="float:right;">Login here</a>
                 </form>
             </div>
         </div>
