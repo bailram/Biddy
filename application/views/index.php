@@ -49,7 +49,7 @@
                         <div class="col-3 text-center border p-3">
                             <img src="<?php echo base_url('images/property.png'); ?>" 
                                 class="img-fluid mb-2" alt="Kategori Property">
-                            Property
+                            Properti
                         </div>
                         <div class="col-3 text-center border p-3">
                             <img src="<?php echo base_url('images/gadget.png'); ?>" 
@@ -61,7 +61,7 @@
                         <div class="col-3 text-center border p-3">
                             <img src="<?php echo base_url('images/hobby.png'); ?>" 
                                 class="img-fluid mb-2" alt="Kategori Hobby">
-                            Hobby
+                            Hobi
                         </div>
                     </div>
                 </div>
