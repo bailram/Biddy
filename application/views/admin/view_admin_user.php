@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <section class="content">
-        <table id="ngeseng" class="table table-striped table-bordered" style="width:100%">
+        <table id="table_c" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
@@ -9,6 +9,7 @@
                     <th>Email</th>
                     <th>Alamat</th>
                     <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,16 +35,7 @@
                 </tr>
                 <?php } ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
-            </tfoot>
         </table>
     </section>
 </div> 
+

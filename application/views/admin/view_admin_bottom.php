@@ -8,11 +8,6 @@
   </footer>
 
 
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('#ngising').DataTable();
-} );
-</script>
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url()?>assets/admin/bower_components/jquery/dist/jquery.min.js"></script>
@@ -22,11 +17,17 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#table_c').DataTable();
+    console.log('fal');
+} );
+</script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo base_url()?>assets/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="<?php echo base_url()?>assets/admin/bower_components/raphael/raphael.min.js"></script>
-<script src="<?php echo base_url()?>assets/admin/bower_components/morris.js/morris.min.js"></script>
+<!-- <script src="<?php echo base_url()?>assets/admin/bower_components/morris.js/morris.min.js"></script> -->
 <!-- Sparkline -->
 <script src="<?php echo base_url()?>assets/admin/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -48,7 +49,7 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url()?>assets/admin/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url()?>assets/admin/dist/js/pages/dashboard.js"></script>
+<!-- <script src="<?php echo base_url()?>assets/admin/dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url()?>assets/admin/dist/js/demo.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
