@@ -12,7 +12,8 @@ class Index extends CI_Controller{
 	}
 
 	function index(){
-	    $this->load->view('nav');
+		$this->load->view('nav');
+		$this->load->view('search_component');
 		$this->load->view('index');
 	}
 }

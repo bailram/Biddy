@@ -21,17 +21,11 @@
     </style>
 </head>
 <body>
-
     <!-- content-category-start -->
     <div class="row">
         <div class="col-2">
         </div>
-        <div class="col-8 mt-3">
-            <!-- search-component-start -->
-            <div class="row">
-                <?php include_once('search_component.php'); ?>
-            </div>
-            <!-- search-component-end -->
+        <div class="col-8">
             <div class="row">
                 <!-- cateogry-start -->
                 <div class="col-8">
@@ -89,7 +83,6 @@
                 </div>
                 <!-- iklan-end -->
             </div>
-            
         </div>
         <div class="col-2">
         </div>
