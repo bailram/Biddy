@@ -22,6 +22,14 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea class="form-control" name="alamat" placeholder="Alamat"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="number">Nomor HP</label>
+                <input type="tel" pattern="[0-9]{11}" class="form-control" name="number" placeholder="Nomor HP">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

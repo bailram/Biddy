@@ -11,6 +11,7 @@
             $this->load->library('form_validation');
             $this->load->model('m_user');
             $this->load->model('m_login');
+            $this->load->model('m_lelang');
             if($this->session->userdata('status') != "login" || $this->session->userdata('role') != 1 ){
 			    redirect(base_url());
             }
@@ -60,6 +61,8 @@
             $username = $this->input->post('username');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
+            $alamat = $this->input->post('alamat');
+            $number = $this->input->post('number');
 
         
             $data = array(
@@ -67,6 +70,8 @@
                 'username' => $username,
                 'email' => $email,
                 'password' => $password,
+                'alamat' => $alamat,
+                'no_hp' => $number
             );
         
             $where = array(
@@ -83,6 +88,8 @@
             $this->form_validation->set_rules('username', 'Username', 'trim|required');
             $this->form_validation->set_rules('email', 'Email', 'trim|required');
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
+            $this->form_validation->set_rules('number', 'Number', 'trim|required');
             if ($this->form_validation->run() == FALSE) {
                 $this->add_admin();
             } else {
@@ -90,12 +97,15 @@
                 $username = $this->input->post('username');
                 $email = $this->input->post('email');
                 $password = $this->input->post('password');
-
+                $alamat = $this->input->post('alamat');
+                $number = $this->input->post('number');
                 $data = array(
                     'nama' => $nama,
                     'username' => $username,
                     'email' => $email,
                     'password' => $password,
+                    'alamat' => $alamat,
+                    'no_hp' => $number,
                     'role' => 1,
                     'is_ban' => 0
                     );
@@ -103,6 +113,16 @@
                 $this->m_login->input_data($data,'user');
                 redirect('admin/user');
             }    
+        }
+
+
+
+        public function lelang()
+        {
+            $data['lelang'] = $this->m_lelang->tampil_data()->result();
+            $this->load->view('admin/view_admin_top');
+            $this->load->view('admin/lelang/view_admin_lelang',$data);
+            $this->load->view('admin/view_admin_bottom');
         }
 
       

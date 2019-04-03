@@ -10,6 +10,7 @@
                     <th>Nama User</th>
                     <th>Email</th>
                     <th>Alamat</th>
+                    <th>Nomor HP</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
@@ -25,6 +26,7 @@
                     <td><?= $u->nama ?></td>
                     <td><?= $u->email ?></td>
                     <td><?= $u->alamat ?></td>
+                    <td><?= $u->no_hp ?></td>
                     <td><?php if ($u->role == 0) {
                             echo 'user';
                         } else {

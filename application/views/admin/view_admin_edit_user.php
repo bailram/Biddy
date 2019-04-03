@@ -27,6 +27,15 @@
                 <input type="password" class="form-control" name="password" placeholder="Password"
                     value="<?php echo $u->password ?>">
             </div>
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea class="form-control" name="alamat" placeholder="Alamat"><?php echo $u->alamat ?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="number">Nomor HP</label>
+                <input type="tel" pattern="[0-9]{11}" class="form-control" name="number" placeholder="Nomor HP"
+                    value="<?php echo $u->no_hp ?>">
+            </div>
 
             <button type="submit" class="btn btn-info">Save</button>
             <a href="" class="btn btn-danger">Back</a>
