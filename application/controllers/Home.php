@@ -1,6 +1,6 @@
 <?php 
 
-class Index extends CI_Controller{
+class Home extends CI_Controller{
 
 	function __construct(){
         
@@ -14,6 +14,6 @@ class Index extends CI_Controller{
 	function index(){
 		$this->load->view('nav');
 		$this->load->view('search_component');
-		$this->load->view('index');
+		$this->load->view('home/index.php');
 	}
 }
