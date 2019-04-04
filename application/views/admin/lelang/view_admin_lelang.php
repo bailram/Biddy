@@ -32,9 +32,9 @@
                     <td><?= $u->final_bid ?></td>
                     <td><?= $u->total_bidder ?></td>
                     <td><?= $u->tanggal ?></td>
-                    <td> <?= '<a href="edit_user/' . $u->id_lelang . '" class="btn btn-info">Edit</a>'; ?>
+                    <td> <?= '<a href="edit_lelang/' . $u->id_lelang . '" class="btn btn-info">Edit</a>'; ?>
                         |
-                        <?= '<a href="delete_user/' . $u->id_lelang . '" class="btn btn-danger">Delete</a>'; ?>
+                        <?= '<a href="delete_lelang/' . $u->id_lelang . '" class="btn btn-danger">Delete</a>'; ?>
                     </td>
                 </tr>
                 <?php 

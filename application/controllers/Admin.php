@@ -125,6 +125,14 @@
             $this->load->view('admin/view_admin_bottom');
         }
 
+        function delete_lelang($id){
+            $where = array('id_lelang' => $id);
+            $this->m_user->hapus_data($where,'lelang');
+           redirect('admin/lelang');
+        }
+
+
+
       
     
     }
