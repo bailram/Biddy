@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css manual/index_css.css') ?>">
+    
     <script src="main.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/admin/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+
     <style type="text/css">
-        body{
-            overflow-x:hidden;
-        }
+    body{
+        overflow-x:hidden;
+    }
 
-        .login-input{
-            display: block;
-        }
+    .login-input{
+        display: block;
+    }
 
-    </style>
+</style>
 </head>
 <body>
     <!-- content-category-start -->
@@ -31,30 +34,30 @@
                 <div class="col-8">
                     <div class="row">
                         <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/car.png'); ?>" 
-                                class="img-fluid mb-2" alt="Kategori Mobil">
-                                Mobil    
+                            <img src="<?php echo base_url('images/car.png'); ?>"
+                            class="img-fluid mb-2" alt="Kategori Mobil">
+                            Mobil
                         </div>
                         <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/motorbike.png'); ?>" 
-                                class="img-fluid mb-2" alt="Kategori Motor">
+                            <img src="<?php echo base_url('images/motorbike.png'); ?>"
+                            class="img-fluid mb-2" alt="Kategori Motor">
                             Motor
                         </div>
                         <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/property.png'); ?>" 
-                                class="img-fluid mb-2" alt="Kategori Property">
+                            <img src="<?php echo base_url('images/property.png'); ?>"
+                            class="img-fluid mb-2" alt="Kategori Property">
                             Properti
                         </div>
                         <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/gadget.png'); ?>" 
-                                class="img-fluid mb-2" alt="Kategori Gadget">
+                            <img src="<?php echo base_url('images/gadget.png'); ?>"
+                            class="img-fluid mb-2" alt="Kategori Gadget">
                             Gadget
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/hobby.png'); ?>" 
-                                class="img-fluid mb-2" alt="Kategori Hobby">
+                            <img src="<?php echo base_url('images/hobby.png'); ?>"
+                            class="img-fluid mb-2" alt="Kategori Hobby">
                             Hobi
                         </div>
                     </div>
@@ -62,8 +65,8 @@
                 <!-- cateogry-end -->
                 <!-- iklan-start -->
                 <div class="col-4">
-                    <img src="<?php echo base_url('images/iklan.jpg'); ?>" 
-                                class="img-fluid" style="height: 100%" alt="Iklan">
+                    <img src="<?php echo base_url('images/iklan.jpg'); ?>"
+                    class="img-fluid" style="height: 100%" alt="Iklan">
                     <!-- color-pallete-start -->
                     <div class="row pl-3 pr-3">
                         <div class="col-3" style="background: #c0dfd9">
@@ -74,7 +77,7 @@
                         </div>
                         <div class="col-3" style="background: #b3c2bf">
                             &nbsp;
-                        </div>
+                        </div>k
                         <div class="col-3" style="background: #3b3a36">
                             &nbsp;
                         </div>
