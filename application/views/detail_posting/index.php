@@ -17,7 +17,7 @@
     <div class="col-8">
         <!-- content-home-start -->
         <?php
-            include_once('home_content.php');
+            include_once('detail_posting_content.php');
         ?>
         <!-- content-home-end -->
     </div>
