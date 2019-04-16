@@ -143,6 +143,13 @@ class Admin extends CI_Controller
         $this->load->view('admin/transaction/view_admin_trans', $data);
         $this->load->view('admin/view_admin_bottom');
     }
+
+    function delete_trans($id)
+    {
+        $where = array('id_transaksi' => $id);
+        $this->m_user->hapus_data($where, 'transaksi');
+        redirect('admin/trans');
+    }
 }
     
     /* End of file Admin_controller.php */

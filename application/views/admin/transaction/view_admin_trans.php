@@ -24,8 +24,8 @@
                     <td><?= $u->judul ?></td>
                     <td>
                         <!-- <?= '<a href="edit_lelang/' . $u->id_lelang . '" class="btn btn-info">Edit</a>'; ?>
-                            | -->
-                        <?= '<a href="delete_lelang/' . $u->id_lelang . '" class="btn btn-danger">Delete</a>'; ?>
+                                | -->
+                        <?= '<a href="delete_trans/' . $u->id_transaksi . '" class="btn btn-danger">Delete</a>'; ?>
                     </td>
                 </tr>
                 <?php
