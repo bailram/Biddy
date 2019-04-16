@@ -20,9 +20,9 @@ class M_user extends CI_Model
         return $this->db->get_where($table, $where);
     }
 
-    function get_total_user()
+    function get_total_user($table)
     {
-        return $this->db->count_all('user');
+        return $this->db->count_all($table);
     }
 }
     
