@@ -108,7 +108,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="<?= base_url('admin/user') ?>"><i class="fa fa-user"></i>User</a></li>
-                            <li><a href="<?= base_url('admin/user') ?>"><i class="fa fa-bar-chart"></i>Transaction</a>
+                            <li><a href="<?= base_url('admin/trans') ?>"><i class="fa fa-bar-chart"></i>Transaction</a>
                             </li>
                             <li><a href="<?= base_url('admin/lelang') ?>"><i class="fa fa-line-chart"></i>Lelang</a>
                             </li>

@@ -10,6 +10,16 @@ class M_lelang extends CI_Model
         return $this->db->get('lelang');
     }
 
+    function get_trans()
+    {
+        // return $this->db->get('transaksi');
+        $this->db->select('transaksi.*,lelang.*');
+        $this->db->from('transaksi');
+        $this->db->join('lelang', 'lelang.id_lelang = transaksi.id_lelang');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function hapus_data($where, $table)
     {
         $this->db->where($where);
