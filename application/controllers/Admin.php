@@ -21,8 +21,9 @@ class Admin extends CI_Controller
 
     public function index()
     {
+        $data['total_user'] = $this->m_user->get_total_user();
         $this->load->view('admin/view_admin_top');
-        $this->load->view('admin/view_admin_content');
+        $this->load->view('admin/view_admin_content', $data);
         $this->load->view('admin/view_admin_bottom');
     }
 
