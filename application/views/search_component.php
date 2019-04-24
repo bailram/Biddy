@@ -30,7 +30,7 @@ $(document).ready(function() {
     </div>
     <div class="col-8 mt-3">
         <div class="row">
-            <form action="<?php echo site_url('index/aksi_form'); ?>" method="post" class="pl-3 pt-3 pb-3" style="	width: 98.5%; 
+            <form action="<?php echo site_url('index/aksi_form'); ?>" method="post" class="pl-3 pt-3 pb-3" style="width: 98.5%; 
 			background: #e9ece5">
                 <div class="row">
                     <div class="col-12 form-inline">

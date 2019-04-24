@@ -1,21 +1,40 @@
 <?php
-    
-    defined('BASEPATH') OR exit('No direct script access allowed');
-    
-    class M_home extends CI_Model {
-        function tampil_data(){
-            return $this->db->get('lelang');
-        }
-        
-        function get_provinsi(){
-        	return $this->db->get('provinsi');
-        }
 
-        function get_kota(){
-        	return $this->db->get('kota');
-        }
-    
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class M_home extends CI_Model {
+    function tampil_data(){
+        return $this->db->get('lelang');
     }
-    
-    /* End of file M_home.php */
-    
+
+    function tampil_data_where_kategori($id){
+        $where = array('kategori' => $id);
+        return $this->db->get_where('lelang',$where);
+    }
+
+    function get_provinsi(){
+       return $this->db->get('provinsi');
+    }
+
+    function get_kota(){
+       return $this->db->get('kota');
+    }
+
+    function get_post($where){
+    return $this->db->get_where('lelang',$where);
+    }
+
+    function get_user_info($where){
+        return $this->db->get_where('user',$where);
+    }
+
+    function get_nama_provinsi($where){
+        return $this->db->get_where('provinsi',$where);
+    }
+
+    function get_nama_kota($where){
+        return $this->db->get_where('kota',$where);
+    }
+}
+
+/* End of file M_home.php */
