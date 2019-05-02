@@ -24,6 +24,16 @@ class M_user extends CI_Model
     {
         return $this->db->count_all($table);
     }
+
+    function get_ban(){
+        $this->db->select('transaksi.*,lelang.*');
+        $this->db->from('transaksi');
+        $this->db->join('lelang', 'lelang.id_lelang = transaksi.id_lelang');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
+
+
     
     /* End of file M_user.php */

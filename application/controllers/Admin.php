@@ -88,6 +88,26 @@ class Admin extends CI_Controller
         redirect('admin/user');
     }
 
+    function update_lelang()
+    {
+        $id = $this->input->post('id');
+        $judul = $this->input->post('judul');
+        $desc = $this->input->post('deskripsi');
+
+
+        $data = array(
+            'judul' => $judul,
+            'deskripsi' => $desc,
+        );
+
+        $where = array(
+            'id_lelang' => $id
+        );
+
+        $this->m_login->update_data($where, $data, 'lelang');
+        redirect('admin/lelang ');
+    }
+
     function do_add_admin()
     {
 
@@ -139,6 +159,15 @@ class Admin extends CI_Controller
         redirect('admin/lelang');
     }
 
+    function edit_lelang($id)
+    {
+        $where = array('id_lelang' => $id);
+        $data['lelang'] = $this->m_user->edit_data($where, 'lelang')->result();
+        $this->load->view('admin/view_admin_top');
+        $this->load->view('admin/lelang/view_admin_edit_lelang', $data);
+        $this->load->view('admin/view_admin_bottom');
+    }
+
     public function trans()
     {
         $data['trans'] = $this->m_lelang->get_trans();
@@ -153,6 +182,10 @@ class Admin extends CI_Controller
         $this->m_user->hapus_data($where, 'transaksi');
         redirect('admin/trans');
     }
+
+
+    function report()
+    { }
 }
     
     /* End of file Admin_controller.php */
