@@ -1,85 +1,130 @@
 <?php
-$no = 1;
+//$no = 1;
+if($this->db->get_where('lelang',array('kategori' => $this->uri->segment(3)))->num_rows() == 0 && $this->uri->segment(3) != null){
+    include_once('v_404_not_found.php');    
+}
 foreach ($lelang as $l) { ?>
-<div class="row pt-3 pb-3 mb-3" style="width:101.7%; background: #e9ece5">
-    <div class="col-md-3">
-        <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="gambar">
-    </div>
-    <div class="col-md-6">
-        <div class="row h4">
-            <a href="<?= base_url('detailposting') ?>">
-                <?php echo $l->judul ?>
-                <!--Ini judul-->
-            </a>
+    <div class="row pt-3 pb-3 mb-3" style="width:101.7%; background: #e9ece5">
+        <div class="col-md-3">
+            <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="gambar">
         </div>
-        <div class="row">
-            <small><?php echo $l->id_provinsi ?> > <?php echo $l->id_kota ?></small>
-            <!--<small>Provinsi > Kota</small>-->
+        <div class="col-md-6">
+            <div class="row h4">
+                <!--<a href="<?php// echo base_url('detailposting') ?>">-->
+                    <a href="<?= base_url('home/post/').$l->id_lelang ?>">
+                        <?php echo $l->judul ?>
+                        <!--Ini judul-->
+                    </a>
+                </div>
+                <div class="row mb-2">
+                    <small>
+                        <?php 
+                        foreach ($data_provinsi as $dp) {
+                            echo $dp->nama." ";
+                        }
+                        ?> 
+                        / 
+                        <?php 
+                        foreach ($data_kota as $dk) {
+                            echo $dk->nama;
+                        }
+                        ?>
+                    </small>
+                    <!--<small>Provinsi > Kota</small>-->
+                </div>
+                <div class="row mb-2">
+                    <span class="badge badge-info">
+                        <?php 
+                        if($l->kategori == 1){
+                            echo "Mobil";
+                        }else if($l->kategori == 2){
+                            echo "Motor";
+                        }else if($l->kategori == 3){
+                            echo "Properti";
+                        }else if($l->kategori == 4){
+                            echo "Gadget";
+                        }else{
+                            echo "Hobi";
+                        }
+
+                        ?>
+                        <!--Kategori-->
+                    </span>
+                </div>
+                <div class="row border-top mt-1">
+                    <h5>
+                        <?php 
+                            if($l->status == 0){
+                                echo "Sedang Berlangsung";
+                            }else{
+                                echo "Selesai";
+                            }
+                        ?>
+                    </h5>
+                    <!--<div class="col-sm-3">
+                        <div class="row">
+                            8
+                        </div>
+                        <div class="row">
+                            <small>Days</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            8
+                        </div>
+                        <div class="row">
+                            <small>Hours</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            8
+                        </div>
+                        <div class="row">
+                            <small>Minutes</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            8
+                        </div>
+                        <div class="row">
+                            <small>Seconds</small>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row  text-right">
+                    <div class="col">
+                        Rp.
+                    </div>
+                    <div class="col">
+                        <?php echo number_format($l->final_bid,2,',','.') ?>
+                        <!--1.000.000-->
+                    </div>
+                </div>
+                <div class="row  text-right">
+                    <div class="col">
+                        Bids
+                    </div>
+                    <div class="col">
+                        <?php echo $l->total_bidder ?>
+                    </div>
+                </div>
+                <div class="row  text-right">
+                    <div class="col">
+                        Top Bidder
+                    </div>
+                    <div class="col">
+                        <?php 
+                            foreach ($user as $u) {
+                                echo $u->nama;
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <small>Kategori</small>
-        </div>
-        <div class="row border-top mt-1">
-            <div class="col-sm-3">
-                <div class="row">
-                    8
-                </div>
-                <div class="row">
-                    <small>Days</small>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="row">
-                    8
-                </div>
-                <div class="row">
-                    <small>Hours</small>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="row">
-                    8
-                </div>
-                <div class="row">
-                    <small>Minutes</small>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="row">
-                    8
-                </div>
-                <div class="row">
-                    <small>Seconds</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="row  text-right">
-            <div class="col">
-                Rp.
-            </div>
-            <div class="col">
-                <?php echo $l->final_bid ?>
-                <!--1.000.000-->
-            </div>
-        </div>
-        <div class="row  text-right">
-            <div class="col">
-                Bids
-            </div>
-            <div class="col">
-                <?php echo $l->total_bidder ?>
-            </div>
-        </div>
-        <div class="row  text-right">
-            <div class="col">
-                Top Bidder
-            </div>
-            <div class="col">
-                <?php echo $l->id_pemenang ?>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
+        <?php } ?>

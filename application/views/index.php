@@ -33,40 +33,50 @@
                 <!-- cateogry-start -->
                 <div class="col-8">
                     <div class="row">
-                        <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/car.png'); ?>"
-                            class="img-fluid mb-2" alt="Kategori Mobil">
-                            Mobil
-                        </div>
-                        <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/motorbike.png'); ?>"
-                            class="img-fluid mb-2" alt="Kategori Motor">
-                            Motor
-                        </div>
-                        <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/property.png'); ?>"
-                            class="img-fluid mb-2" alt="Kategori Property">
-                            Properti
-                        </div>
-                        <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/gadget.png'); ?>"
-                            class="img-fluid mb-2" alt="Kategori Gadget">
-                            Gadget
-                        </div>
+                        <a href="<?php echo "home/search/".$id_kategori=1; ?>" class="col-3 text-center border p-3 text-dark">
+                            <div>
+                                <img src="<?php echo base_url('images/car.png'); ?>"
+                                class="img-fluid mb-2" alt="Kategori Mobil">
+                                <b>Mobil</b>
+                            </div>    
+                        </a>
+                        <a href="<?php echo "home/search/".$id_kategori=2; ?>" class="col-3 text-center border p-3 text-dark">
+                            <div>
+                                <img src="<?php echo base_url('images/motorbike.png'); ?>"
+                                class="img-fluid mb-2" alt="Kategori Motor">
+                                <b>Motor</b>
+                            </div>    
+                        </a>
+                        <a href="<?php echo "home/search/".$id_kategori=3; ?>" class="col-3 text-center border p-3 text-dark">
+                            <div>
+                                <img src="<?php echo base_url('images/property.png'); ?>"
+                                class="img-fluid mb-2" alt="Kategori Property">
+                                <b>Properti</b>
+                            </div>    
+                        </a>
+                        <a href="<?php echo "home/search/".$id_kategori=4; ?>" class="col-3 text-center border p-3 text-dark">
+                            <div>
+                                <img src="<?php echo base_url('images/gadget.png'); ?>"
+                                class="img-fluid mb-2" alt="Kategori Gadget">
+                                <b>Gadget</b>
+                            </div>
+                        </a>
                     </div>
-                    <div class="row">
-                        <div class="col-3 text-center border p-3">
-                            <img src="<?php echo base_url('images/hobby.png'); ?>"
-                            class="img-fluid mb-2" alt="Kategori Hobby">
-                            Hobi
-                        </div>
-                    </div>
+                    <a href="<?php echo "home/search/".$id_kategori=5; ?>">
+                        <div class="row">
+                            <div class="col-3 text-center border p-3 text-dark">
+                                <img src="<?php echo base_url('images/hobby.png'); ?>"
+                                class="img-fluid mb-2" alt="Kategori Hobby">
+                                <b>Hobi</b>
+                            </div>
+                        </div>    
+                    </a>
                 </div>
                 <!-- cateogry-end -->
                 <!-- iklan-start -->
                 <div class="col-4">
                     <img src="<?php echo base_url('images/iklan.jpg'); ?>"
-                    class="img-fluid" style="height: 100%" alt="Iklan">
+                    class="img-fluid" alt="Iklan">
                     <!-- color-pallete-start -->
                     <div class="row pl-3 pr-3">
                         <div class="col-3" style="background: #c0dfd9">
@@ -77,7 +87,7 @@
                         </div>
                         <div class="col-3" style="background: #b3c2bf">
                             &nbsp;
-                        </div>k
+                        </div>
                         <div class="col-3" style="background: #3b3a36">
                             &nbsp;
                         </div>
