@@ -19,10 +19,10 @@
     <div class="row">
         <div class="col-2">
         </div>
-        <div class="col-8 p-3" style="background: #e9ece5">
+        <div class="col-8 p-3">
             <!-- content-home-start -->
             <?php
-                include_once('v_user_info.php');
+            include_once('v_user_info.php');
             ?>
             <!-- content-home-end -->
         </div>
