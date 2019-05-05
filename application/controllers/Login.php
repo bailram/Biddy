@@ -23,8 +23,10 @@ class Login extends CI_Controller
 		if ($this->session->userdata('status') == "login") {
 			redirect(base_url(""));
 		} else {
+			$data["pesan"] = null;
 			$this->load->view('nav');
 			$this->load->view('login/index.php');
+			$this->load->view('login/login_content.php', $data);
 		}
 	}
 
@@ -57,7 +59,10 @@ class Login extends CI_Controller
 
 				redirect(base_url("index"));
 			} else {
-				echo "Username dan password salah !";
+				$data["pesan"] = "Username atau Password salah !";
+				$this->load->view('nav');
+				$this->load->view('login/index.php');
+				$this->load->view('login/login_content.php', $data);
 			}
 		}
 	}
