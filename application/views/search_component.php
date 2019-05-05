@@ -1,30 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#provinsi").change(function() {
-            $.ajax({
-                    type: "POST",
-                    url: "search_component.php",
-                    data: {
-                        provinsi: $("#provinsi").val()
-                    },
-                    dataType: "json",
-                    beforeSend: function(e) {
-                        if (e && e.overrideMimeType) {
-                            e.overrideMimeType {
-                                "application/json;charset=UTF-8");
-                        }
-                    },
-                    success: function(response) {
-                        $("#kota").html(response.data_kota).show();
-                    },
-                    error: function(xhr, jaxOptions, thrownError) {
-                        error alert(thrownError);
-                    }
-                }
-            });
-    });
-});
-</script>
 <div class="row">
     <div class="col-2">
     </div>
