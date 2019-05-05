@@ -34,42 +34,54 @@
                     <form action="<?php echo base_url('lelang/add');?>" method="post">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-edit"></i>
+                                </span>
                             </div>
                             <input type="text" name="judul" title="judul" class="form-control login-input" placeholder="judul" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-edit"></i>
+                                </span>
                             </div>
                             <input type="text" name="deskripsi" title="deskripsi" class="form-control login-input" placeholder="deskripsi" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-images"></i>
+                                </span>
                             </div>
                             <input type="text" name="foto" title="foto" class="form-control login-input" placeholder="foto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-search"></i>
+                                </span>
                             </div>
                             <input type="text" name="kondisi" title="kondisi" class="form-control login-input" placeholder="kondisi" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-gavel"></i>
+                                </span>
                             </div>
                             <input type="text" name="next_bid" title="next_bid" class="form-control login-input" placeholder="Next Bid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
                         
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-object-group"></i>
+                                </span>
                             </div>
                             <input type="text" name="kategori" title="kategori" class="form-control login-input" placeholder="kategori" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
@@ -84,8 +96,8 @@
                         </div>
                         
 
-                        <button type="submit" class="btn btn-primary">Register</button>
-                        <a class="forgot" href="<?php echo site_url('/login') ?>"style="float:right;">Login here</a>
+                        <button type="submit" class="btn btn-primary">Pasang Iklan</button>
+                        
                     </form>
                 </div>
             </div>

@@ -11,7 +11,7 @@
       </li>
      
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="<?=base_url('lelang')?>">Lelang</a>
       </li>
       <?php 
       if($this->session->userdata('status') == "login"){

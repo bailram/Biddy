@@ -5,13 +5,26 @@ class Lelang extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('m_home');
 		$this->load->model('m_lelang');
-		
+		if ($this->session->userdata('status') != "login") {
+            redirect(base_url('login'));
+        }
 	}
 
 	function index(){
+		$id = $this->session->userdata('id_user');
+		$where = array('id_user' => $id);
+		$data['user'] = $this->m_home->get_user_info($where)->result();
+		$where = array('id_pelelang' => $id);
+		$data['lelang'] =  $this->m_home->get_data_lelang_user($where)->result();
+		foreach ($data['lelang'] as $l) {
+			$data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
+			$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
+		}
+
 		$this->load->view('nav');
-		$this->load->view('lelang/view_lelang_content');
+		$this->load->view('lelang/view_lelang_content', $data);
 	}
 
 	function add(){
