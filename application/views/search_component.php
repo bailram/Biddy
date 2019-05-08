@@ -1,3 +1,20 @@
+<script src="<?php echo base_url() ?>assets/admin/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#prov_id").change(function() {
+        var prov_id = $("#prov_id").val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>/home/getKota",
+            data: "prov_id=" + prov_id,
+            success: function(data) {
+                $("#kota").html(data);
+            }
+        });
+    });
+});
+</script>
+
 <div class="row">
     <div class="col-2">
     </div>
@@ -7,7 +24,7 @@
 			background: #e9ece5">
                 <div class="row">
                     <div class="col-12 form-inline">
-                        <select class="form-control mr-2" id="provinsi" style=" 
+                        <select class="form-control mr-2" id="prov_id" style=" 
 					background-image: url('<?php echo base_url('/images/location.png'); ?>');
 					padding-left: 10px;
 					background-position: 10px 10px;

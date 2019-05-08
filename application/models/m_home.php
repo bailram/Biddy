@@ -20,9 +20,11 @@ class M_home extends CI_Model
         return $this->db->get('provinsi');
     }
 
-    function get_kota()
+    function get_kota($id_prov)
     {
-        return $this->db->get('kota');
+        $this->db->where('id_prov', $id_prov);
+        $result =  $this->db->get('kota');
+        return $result->result_array();
     }
 
     function get_post($where)
