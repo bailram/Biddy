@@ -3,7 +3,7 @@
     </div>
     <div class="col-8 mt-3">
         <div class="row">
-            <form action="<?php echo site_url('index/aksi_form'); ?>" method="post" class="pl-3 pt-3 pb-3" style="width: 98.5%; 
+            <form action="<?php echo site_url('home/search'); ?>" method="post" class="pl-3 pt-3 pb-3" style="width: 98.5%; 
 			background: #e9ece5">
                 <div class="row">
                     <div class="col-12 form-inline">
@@ -34,7 +34,8 @@
                             <option value="0">Pilih Kota</option>
                         </select>
 
-                        <input type="text" class="form-control mr-2" placeholder="Search..." id="search_product" style=" 
+                        <input type="text" class="form-control mr-2" placeholder="Search..." id="search_product"
+                            name="search_product" style=" 
 			width: 53%;
 			background-image: url('<?php echo base_url('/images/search.png'); ?>');
 			padding-left: 10px;

@@ -30,9 +30,9 @@ class M_lelang extends CI_Model
         return $query->result();
     }
 
-    function hapus_data($where, $table)
+    function hapus_data($where)
     {
         $this->db->where($where);
-        $this->db->delete($table);
+        $this->db->delete('lelang');
     }
 }

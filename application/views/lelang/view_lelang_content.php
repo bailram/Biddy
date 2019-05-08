@@ -30,10 +30,10 @@
         <div class="col-8">
             <div class="row">
                 <div class="col-10">
-                      
+
                 </div>
                 <div class="col-2 align-self-end">
-                    <a class="btn btn-primary mt-2" href="<?= base_url('lelang/add/') ?>" role="button">
+                    <a class="btn btn-success mt-2" href="<?= base_url('lelang/add/') ?>" role="button">
                         <i class="fas fa-plus"> Pasang iklan</i>
                     </a>        
                 </div>    
@@ -163,6 +163,14 @@
                                 }
                                 ?>
                             </div>
+                        </div>
+                        <div class="row ml-2">
+                            <a class="btn btn-primary mt-2 mr-2" href="<?= base_url('lelang/update/').$l->id_lelang ?>" role="button">
+                                <i class="fas fa-pen">&nbsp;Edit</i>
+                            </a>
+                            <a class="btn btn-danger mt-2" href="<?= base_url('lelang/do_delete/').$l->id_lelang ?>" role="button">
+                                <i class="fas fa-trash">&nbsp;Hapus</i>
+                            </a>
                         </div>
                     </div>
                 </div>
