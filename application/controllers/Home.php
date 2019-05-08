@@ -15,12 +15,12 @@ class Home extends CI_Controller
 	{
 		$data['provinsi'] = $this->m_search_component->provinsi();
 		$data['lelang'] = $this->m_home->tampil_data()->result();
-		foreach ($data['lelang'] as $l) {
+		/*foreach ($data['lelang'] as $l) {
 			$whereU = array('id_user' => $l->id_pemenang);
 			$data['user'] = $this->m_home->get_user_info($whereU)->result();
 			$data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
 			$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
-		}
+		}*/
 		$this->load->view('nav');
 		$this->load->view('search_component', $data);
 		$this->load->view('home/index.php');
@@ -29,24 +29,28 @@ class Home extends CI_Controller
 	function search()
 	{
 		$key = $this->input->post('search_product');
+		$id_provinsi = $this->input->post('provinsi');
+		$id_kota = $this->input->post('kota');
 
 		if (is_null($key)) {
 			$id = $this->uri->segment(3);
 			$data['lelang'] = $this->m_home->tampil_data_where_kategori($id)->result();
 		} else {
 			if (isset($key)) {
-				$data['lelang'] = $this->m_home->get_search($key)->result();
+				if($id_provinsi>0 && $id_kota>0){
+					$data['lelang'] = $this->m_home->get_search_with_location_and_key($key,$id_provinsi,$id_kota)->result();
+				} else {
+					$data['lelang'] = $this->m_home->get_search($key)->result();
+				}
 			} else {
-				$data['lelang'] = $this->m_home->tampil_data()->result();
+				if($id_provinsi>0 && $id_kota>0){
+					$data['lelang'] = $this->m_home->get_search_with_location($id_provinsi,$id_kota)->result();
+				} else {
+					$data['lelang'] = $this->m_home->tampil_data()->result();	
+				}
 			}
 		}
 		$data['provinsi'] = $this->m_search_component->provinsi();
-		foreach ($data['lelang'] as $l) {
-			$whereU = array('id_user' => $l->id_pemenang);
-			$data['user'] = $this->m_home->get_user_info($whereU)->result();
-			$data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
-			$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
-		}
 		$this->load->view('nav');
 		$this->load->view('search_component', $data);
 		$this->load->view('home/index.php');

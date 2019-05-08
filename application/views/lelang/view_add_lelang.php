@@ -22,6 +22,22 @@
     }
 
 </style>
+<script src="<?php echo base_url() ?>assets/admin/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#provinsi").change(function() {
+            var prov_id = $("#provinsi").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>/lelang/getKota",
+                data: "provinsi=" + prov_id,
+                success: function(data) {
+                    $("#kota").html(data);
+                }
+            });
+        });
+    });
+</script>
 </head>
 <body>
     <div class="row login" style="margin:5%;">
@@ -115,6 +131,31 @@
                             <input type="date" name="tanggal" title="tanggal" class="form-control login-input" placeholder="tanggal" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
                         </div>
                         
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-map-marker-alt"></i>&nbsp;Provinsi
+                                </span>
+                            </div>
+                            <select class="custom-select" id="provinsi" name="provinsi">
+                                <option>Pilih Provinsi</option>
+                                <?php
+                                foreach ($provinsi as $prov) {
+                                    echo "<option value='$prov[id_provinsi]'>$prov[nama]</option>";
+                                } ?>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">
+                                    <i class="fas fa-city"></i>&nbsp;Kota
+                                </span>
+                            </div>
+                            <select class="custom-select" id="kota" name="kota">
+                                <option>Pilih Kota</option>
+                            </select>
+                        </div>
 
                         <button type="submit" class="btn btn-primary">Pasang Iklan</button>
                         

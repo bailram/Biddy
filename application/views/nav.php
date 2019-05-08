@@ -11,17 +11,17 @@
                 <a class="nav-link" href="<?= base_url('home') ?>">Home <span class="sr-only">(current)</span></a>
             </li>
 
-
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('lelang') ?>">My Auction</a>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
             <?php
       if ($this->session->userdata('status') == "login") {
         echo ' 
+
+        <li class="nav-item">
+                <a class="nav-link" href="' . base_url('lelang') . '">My Auction</a>
+            </li>
+
         <li class="nav-item">
         <a class="nav-link"href="' . base_url('user/info/' . $this->session->userdata('id_user')) . '">Profile</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

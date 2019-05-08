@@ -37,6 +37,20 @@ class M_home extends CI_Model
         $this->db->like('judul', $key);
         return $this->db->get('lelang');
     }
+
+    function get_search_with_location($id_provinsi,$id_kota){
+        $this->db->where('id_provinsi',$id_provinsi);
+        $this->db->where('id_kota', $id_kota);
+        return $this->db->get('lelang');
+    }
+
+    function get_search_with_location_and_key($key,$id_provinsi,$id_kota){
+        $this->db->like('judul', $key);
+        $this->db->where('id_provinsi',$id_provinsi);
+        $this->db->where('id_kota', $id_kota);
+        return $this->db->get('lelang');
+    }
+
     function get_user_info($where)
     {
         return $this->db->get_where('user', $where);

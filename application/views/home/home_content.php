@@ -18,14 +18,16 @@ foreach ($lelang as $l) { ?>
                 </div>
                 <div class="row mb-2">
                     <small>
-                        <?php 
-                        foreach ($data_provinsi as $dp) {
-                            echo $dp->nama." ";
+                        <?php
+                        $data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
+                        foreach ($data['data_provinsi'] as $dp) {
+                            echo $dp->nama . " ";
                         }
-                        ?> 
-                        / 
-                        <?php 
-                        foreach ($data_kota as $dk) {
+                        ?>
+                        /
+                        <?php
+                        $data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
+                        foreach ($data['data_kota'] as $dk) {
                             echo $dk->nama;
                         }
                         ?>
@@ -54,11 +56,11 @@ foreach ($lelang as $l) { ?>
                 <div class="row border-top mt-1">
                     <h5>
                         <?php 
-                            if($l->status == 0){
-                                echo "Sedang Berlangsung";
-                            }else{
-                                echo "Selesai";
-                            }
+                        if($l->status == 0){
+                            echo "Sedang Berlangsung";
+                        }else{
+                            echo "Selesai";
+                        }
                         ?>
                     </h5>
                     <!--<div class="col-sm-3">
@@ -119,9 +121,11 @@ foreach ($lelang as $l) { ?>
                     </div>
                     <div class="col">
                         <?php 
-                            foreach ($user as $u) {
-                                echo $u->nama;
-                            }
+                        $whereU = array('id_user' => $l->id_pemenang);
+                        $data['user'] = $this->m_home->get_user_info($whereU)->result();
+                        foreach ($data['user'] as $u) {
+                            echo $u->nama;
+                        }
                         ?>
                     </div>
                 </div>

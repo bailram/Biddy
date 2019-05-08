@@ -24,7 +24,7 @@ $(document).ready(function() {
 			background: #e9ece5">
                 <div class="row">
                     <div class="col-12 form-inline">
-                        <select class="form-control mr-2" id="prov_id" style=" 
+                        <select class="form-control mr-2" id="prov_id" name="provinsi" style=" 
 					background-image: url('<?php echo base_url('/images/location.png'); ?>');
 					padding-left: 10px;
 					background-position: 10px 10px;
@@ -39,7 +39,7 @@ $(document).ready(function() {
 								echo "<option value='$prov[id_provinsi]'>$prov[nama]</option>";
 							} ?>
                         </select>
-                        <select class="form-control mr-2" id="kota" style=" 
+                        <select class="form-control mr-2" id="kota" name="kota" style=" 
 				background-image: url('<?php echo base_url('/images/location.png'); ?>');
 				padding-left: 10px;
 				background-position: 10px 10px;

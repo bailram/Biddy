@@ -58,13 +58,15 @@
         <div class="row mb-2">
             <small>
                 <?php
-                foreach ($data_provinsi as $dp) {
+                $data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
+                foreach ($data['data_provinsi'] as $dp) {
                     echo $dp->nama . " ";
                 }
                 ?>
                 /
                 <?php
-                foreach ($data_kota as $dk) {
+                $data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
+                foreach ($data['data_kota'] as $dk) {
                     echo $dk->nama;
                 }
                 ?>
@@ -164,7 +166,7 @@
                                 ?>
                             </div>
                         </div>
-                        <div class="row ml-2">
+                        <div class="row mr-1 float-right">
                             <a class="btn btn-primary mt-2 mr-2" href="<?= base_url('lelang/update/').$l->id_lelang ?>" role="button">
                                 <i class="fas fa-pen">&nbsp;Edit</i>
                             </a>
