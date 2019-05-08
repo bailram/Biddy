@@ -8,6 +8,7 @@ class Home extends CI_Controller
 
 		parent::__construct();
 		$this->load->model('m_home');
+		$this->load->model('m_lelang');
 		$this->load->model('m_search_component');
 	}
 
@@ -75,14 +76,32 @@ class Home extends CI_Controller
 		$id = $this->uri->segment(3);
 		$where = array('id_lelang' => $id);
 		$data['lelang'] = $this->m_home->get_post($where)->result();
-		foreach ($data['lelang'] as $l) {
-			$whereU = array('id_user' => $l->id_pelelang);
-			$data['user'] = $this->m_home->get_user_info($whereU)->result();
-			$data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
-			$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
-		}
+		
 		$this->load->view('nav');
 		$this->load->view('search_component', $data);
 		$this->load->view('detail_posting/index', $data);
+	}
+
+	function make_bid(){
+		if ($this->session->userdata('status') != "login") {
+			redirect(base_url('login'));
+		}else {
+			$id_lelang = $this->uri->segment(3);
+			$id_pemenang = $this->uri->segment(4);
+
+			$where = array('id_lelang' => $id_lelang);
+			$data['result'] = $this->m_home->get_post($where)->result();
+
+			foreach ($data['result'] as $res) {
+				$final = $res->final_bid + $res->next_bid;
+				$update_data = array(
+					'final_bid' => $final, 
+					'id_pemenang' => $id_pemenang
+				);
+
+				$this->m_lelang->update_data($where,$update_data);
+				redirect('home/post/'.$id_lelang);
+			}
+		}
 	}
 }

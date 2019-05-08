@@ -13,11 +13,11 @@ foreach ($lelang as $l) {
 				<div class="col-3 bg-light rounded ml-4">
 					<h5 class="text-center mt-2">
 						<?php 
-							if($l->status == 0){
-								echo "Sedang Berlangsung";
-							}else{
-								echo "Selesai";
-							}
+						if($l->status == 0){
+							echo "Sedang Berlangsung";
+						}else{
+							echo "Selesai";
+						}
 						?>
 					</h5>
 				</div>
@@ -25,16 +25,18 @@ foreach ($lelang as $l) {
 			<!-- Provinsi dan Kota -->
 			<div class="row container">
 				<span class="badge badge-info">
-					<?php 
-						foreach ($data_provinsi as $dp) {
-							echo $dp->nama." ";
-						}
-					?> 
-					/ 
-					<?php 
-						foreach ($data_kota as $dk) {
-							echo $dk->nama;
-						}
+					<?php
+					$data['data_provinsi'] = $this->m_home->get_nama_provinsi(array('id_provinsi' => $l->id_provinsi))->result();
+					foreach ($data['data_provinsi'] as $dp) {
+						echo $dp->nama . " ";
+					}
+					?>
+					/
+					<?php
+					$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
+					foreach ($data['data_kota'] as $dk) {
+						echo $dk->nama;
+					}
 					?>
 					<!--Provinsi / Kota-->
 				</span>
@@ -63,11 +65,11 @@ foreach ($lelang as $l) {
 							<td>
 								Kondisi : 
 								<?php 
-									if($l->kondisi == 0){
-										echo "Baru";
-									}else {
-										echo "Bekas";
-									}
+								if($l->kondisi == 0){
+									echo "Baru";
+								}else {
+									echo "Bekas";
+								}
 								?>
 								<!--Bekas-->
 							</td>
@@ -95,8 +97,23 @@ foreach ($lelang as $l) {
 						</tr>
 						<tr>
 							<td>
-								<button type="button" class="btn btn-outline-success col-12">
-									Make Bid	
+								Top Bidder : 
+								<?php 
+								$whereU = array('id_user' => $l->id_pemenang);
+								$data['top_bidder'] = $this->m_home->get_user_info($whereU)->result();
+								foreach ($data['top_bidder'] as $tb) {
+									echo $tb->nama;
+								}
+								?>
+								<!--Rp.1.000.000-->
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="button" class="btn btn-outline-success col-12" onclick="window.location.href='<?php echo base_url('home/make_bid/'.$l->id_lelang.'/'.$this->session->userdata('id_user'));?>'">
+									<span>
+										<i class="fas fa-gavel"></i>&nbsp;Make Bid
+									</span>	
 								</button>
 							</td>
 						</tr>
@@ -104,7 +121,10 @@ foreach ($lelang as $l) {
 				</table>
 			</div>
 			<!-- Profil pelelang -->
-			<?php foreach ($user as $u) {?>
+			<?php 
+			$whereU = array('id_user' => $l->id_pelelang);
+			$data['user'] = $this->m_home->get_user_info($whereU)->result();
+			foreach ($data['user'] as $u) {?>
 				<div class="row ml-1 mr-sm-2 p-2 mt-3 border border-light rounded">
 					<table class="col-12">
 						<tr>
@@ -130,8 +150,8 @@ foreach ($lelang as $l) {
 						<tr>
 							<td align="center">
 								<a href="<?php echo base_url('user/info/').$u->id_user; ?>" 
-								class="btn btn-outline-info col-10">
-								View Profile
+									class="btn btn-outline-info col-10">
+									View Profile
 								</a>
 							</td>
 						</tr>
