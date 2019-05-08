@@ -44,9 +44,10 @@
       }
       ?>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <!-- <form action="<?php echo site_url('home/search'); ?>" method="post" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" id="search_product" name="search_product"
+                placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
     </div>
 </nav>
