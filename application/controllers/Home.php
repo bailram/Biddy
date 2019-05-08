@@ -52,6 +52,17 @@ class Home extends CI_Controller
 		$this->load->view('home/index.php');
 	}
 
+	function getKota()
+	{
+		$prov_id = $this->input->post('prov_id');
+		$kota = $this->m_home->get_kota($prov_id);
+
+		$data .= "<option value=''>--Pilih--</option>";
+		foreach ($kota as $k) {
+			$data .= "<option value='$k[id_kota]'>$k[nama]</option>\n";
+		}
+		echo $data;
+	}
 
 
 	function post()
