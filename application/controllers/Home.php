@@ -28,9 +28,19 @@ class Home extends CI_Controller
 
 	function search()
 	{
-		$id = $this->uri->segment(3);
+		$key = $this->input->post('search_product');
+
+		if (is_null($key)) {
+			$id = $this->uri->segment(3);
+			$data['lelang'] = $this->m_home->tampil_data_where_kategori($id)->result();
+		} else {
+			if (isset($key)) {
+				$data['lelang'] = $this->m_home->get_search($key)->result();
+			} else {
+				$data['lelang'] = $this->m_home->tampil_data()->result();
+			}
+		}
 		$data['provinsi'] = $this->m_search_component->provinsi();
-		$data['lelang'] = $this->m_home->tampil_data_where_kategori($id)->result();
 		foreach ($data['lelang'] as $l) {
 			$whereU = array('id_user' => $l->id_pemenang);
 			$data['user'] = $this->m_home->get_user_info($whereU)->result();
@@ -42,7 +52,10 @@ class Home extends CI_Controller
 		$this->load->view('home/index.php');
 	}
 
-	function post(){
+
+
+	function post()
+	{
 		$data['provinsi'] = $this->m_search_component->provinsi();
 		$id = $this->uri->segment(3);
 		$where = array('id_lelang' => $id);
@@ -54,7 +67,7 @@ class Home extends CI_Controller
 			$data['data_kota'] = $this->m_home->get_nama_kota(array('id_kota' => $l->id_kota))->result();
 		}
 		$this->load->view('nav');
-		$this->load->view('search_component',$data);
+		$this->load->view('search_component', $data);
 		$this->load->view('detail_posting/index', $data);
 	}
 }

@@ -5,6 +5,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_lelang extends CI_Model
 {
+
+    function tambah_data($data){
+        $this->db->insert('lelang',$data);
+    }
+
+    function update_data($where,$data){
+        $this->db->where($where);
+        $this->db->update('lelang',$data);
+    }
+
     function tampil_data()
     {
         return $this->db->get('lelang');

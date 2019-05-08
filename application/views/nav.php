@@ -11,6 +11,11 @@
                 <a class="nav-link" href="<?= base_url('home') ?>">Home <span class="sr-only">(current)</span></a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('lelang') ?>">Lelang</a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
@@ -19,7 +24,8 @@
         echo ' 
         <li class="nav-item">
         <a class="nav-link"href="' . base_url('user/info/' . $this->session->userdata('id_user')) . '">Profile</a>
-      </li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
 
       
         <li class="nav-item">

@@ -30,6 +30,11 @@ class M_home extends CI_Model
         return $this->db->get_where('lelang', $where);
     }
 
+    function get_search($key)
+    {
+        $this->db->like('judul', $key);
+        return $this->db->get('lelang');
+    }
     function get_user_info($where)
     {
         return $this->db->get_where('user', $where);
