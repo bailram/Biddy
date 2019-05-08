@@ -36,7 +36,7 @@
             if ($this->form_validation->run() == FALSE) {
                 redirect('register');
             } else {
-                $nama = $this->input->post('username');
+                $nama = $this->input->post('nama');
                 $username = $this->input->post('username');
                 $email = $this->input->post('email');
                 $password = $this->input->post('password');
