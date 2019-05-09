@@ -13,7 +13,8 @@ class Lelang extends CI_Controller
 		}
 	}
 
-	function index(){
+	function index()
+	{
 		$id = $this->session->userdata('id_user');
 		$where = array('id_user' => $id);
 		$data['user'] = $this->m_home->get_user_info($where)->result();
@@ -24,13 +25,15 @@ class Lelang extends CI_Controller
 		$this->load->view('lelang/view_lelang_content', $data);
 	}
 
-	function add(){
+	function add()
+	{
 		$data['provinsi'] = $this->m_search_component->provinsi();
 		$this->load->view('nav');
-		$this->load->view('lelang/view_add_lelang',$data);
+		$this->load->view('lelang/view_add_lelang', $data);
 	}
 
-	function update(){
+	function update()
+	{
 		$id = $this->uri->segment(3);
 		$where = array('id_lelang' => $id);
 		$data['provinsi'] = $this->m_search_component->provinsi();
@@ -39,7 +42,8 @@ class Lelang extends CI_Controller
 		$this->load->view('lelang/view_update_lelang', $data);
 	}
 
-	function do_add(){
+	function do_add()
+	{
 		$judul = $this->input->post('judul');
 		$deskripsi = $this->input->post('deskripsi');
 		$foto = $this->input->post('foto');
@@ -53,10 +57,10 @@ class Lelang extends CI_Controller
 		$id_kota = $this->input->post('kota');
 
 		$now = new DateTime();
-		$status = ($now->format('Y-m-d')>$tanggal) ? 1 : 0 ;
+		$status = ($now->format('Y-m-d') > $tanggal) ? 1 : 0;
 
 		$data = array(
-			'id_lelang'=> null,
+			'id_lelang' => null,
 			'judul' => $judul,
 			'tanggal' => $tanggal,
 			'deskripsi' => $deskripsi,
@@ -67,7 +71,7 @@ class Lelang extends CI_Controller
 			'final_bid' => $final_bid,
 			'total_bidder' => 0,
 			'kategori' => $kategori,
-			'id_pemenang' => 0,
+			'id_pemenang' => null,
 			'id_pelelang' => $id_pelelang,
 			'id_kota' => $id_kota,
 			'id_provinsi' => $id_provinsi
@@ -77,7 +81,8 @@ class Lelang extends CI_Controller
 		redirect('lelang');
 	}
 
-	function do_update(){
+	function do_update()
+	{
 		$id_lelang = $this->uri->segment(3);
 		$judul = $this->input->post('judul');
 		$deskripsi = $this->input->post('deskripsi');
@@ -92,7 +97,7 @@ class Lelang extends CI_Controller
 		$id_kota = $this->input->post('kota');
 
 		$now = new DateTime();
-		$status = ($now->format('Y-m-d')>$tanggal) ? 1 : 0 ;
+		$status = ($now->format('Y-m-d') > $tanggal) ? 1 : 0;
 
 		$data = array(
 			'judul' => $judul,
@@ -110,11 +115,12 @@ class Lelang extends CI_Controller
 
 		$where = array('id_lelang' => $id_lelang);
 
-		$this->m_lelang->update_data($where,$data);
+		$this->m_lelang->update_data($where, $data);
 		redirect('lelang');
 	}
 
-	function do_delete(){
+	function do_delete()
+	{
 		$id_lelang = $this->uri->segment(3);
 		$where = array('id_lelang' => $id_lelang);
 		$this->m_lelang->hapus_data($where);
