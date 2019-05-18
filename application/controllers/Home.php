@@ -11,6 +11,7 @@ class Home extends CI_Controller
 		$this->load->model('m_home');
 		$this->load->model('m_lelang');
 		$this->load->model('m_search_component');
+		$this->load->model('m_transaksi');
 	}
 
 	function index()
@@ -77,7 +78,15 @@ class Home extends CI_Controller
 		$id = $this->uri->segment(3);
 		$where = array('id_lelang' => $id);
 		$data['lelang'] = $this->m_home->get_post($where)->result();
+<<<<<<< HEAD
 
+=======
+		foreach ($data['lelang'] as $l) {
+			if(($l->tanggal < date('Y-m-d', time())) && $l->status == 0){
+				redirect(base_url('home/update_status_lelang/'.$this->uri->segment(3).'/'.$l->id_pelelang.'/'.$l->id_pemenang),'refresh');
+			}
+		}
+>>>>>>> 9b3fa6cfe9bed6b53714552840f4ae60f0a2925a
 		$this->load->view('nav');
 		$this->load->view('search_component', $data);
 		$this->load->view('detail_posting/index', $data);
@@ -105,5 +114,58 @@ class Home extends CI_Controller
 				redirect('home/post/' . $id_lelang);
 			}
 		}
+	}
+
+	function update_status_lelang(){
+		//update status lelang
+		$where = array('id_lelang' => $this->uri->segment(3));
+		$update_status = array('status' => 1);
+		$this->m_lelang->update_data($where,$update_status);
+
+		//tambah transaksi
+		$tgl = date('Y-m-d', time());
+		$deadline = date('Y-m-d', strtotime('+6 days', strtotime($tgl)));
+		$data_transaksi = array(
+			'id_transaksi' => null, 
+			'tanggal' => $tgl,
+			'deadline' => $deadline,
+			'status' => 0,
+			'id_lelang' => $this->uri->segment(3)
+		);
+		$this->m_transaksi->tambah_data_transaksi($data_transaksi);
+
+		//cari id transaksi yang baru saja diinput
+		$where = array('id_lelang' => $this->uri->segment(3));
+		$data['transaksi'] = $this->m_transaksi->tampil_data_transaksi_where($where)->result();
+		//tambah status pelelangan untuk pelelang dan pemenang
+		foreach ($data['transaksi'] as $t) {
+			if($this->uri->segment(4)>0){
+				$data_pelelang = array(
+					'id_status_pelelangan' => null, 
+					'id_lelang'=> $this->uri->segment(3),
+					'id_transaksi' => $t->id_transaksi,
+					'id_user' =>  $this->uri->segment(4),
+					'alasan' => "",
+					'status' => 0
+				);	
+			}
+			if($this->uri->segment(5)>0){
+				$data_pemenang = array(
+					'id_status_pelelangan' => null, 
+					'id_lelang'=> $this->uri->segment(3),
+					'id_transaksi' => $t->id_transaksi,
+					'id_user' =>  $this->uri->segment(5),
+					'alasan' => "",
+					'status' => 0
+				);
+			}
+			$this->m_transaksi->tambah_data_status_pelelangan($data_pelelang);
+			$this->m_transaksi->tambah_data_status_pelelangan($data_pemenang);
+		}
+
+		redirect(base_url('home/post/'.$this->uri->segment(3)),'refresh');
+		/*echo $this->uri->segment(3)."<br>";
+		echo $this->uri->segment(4)."<br>";
+		echo $this->uri->segment(5)."<br>";*/
 	}
 }
