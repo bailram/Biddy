@@ -113,18 +113,22 @@ class Lelang extends CI_Controller
 		$id_lelang = $this->uri->segment(3);
 		$judul = $this->input->post('judul');
 		$deskripsi = $this->input->post('deskripsi');
-		$foto = $this->input->post('foto');
 		$kondisi = $this->input->post('kondisi');
 		$final_bid = $this->input->post('final_bid');
 		$next_bid = $this->input->post('next_bid');
 		$kategori = $this->input->post('kategori');
 		$tanggal = $this->input->post('tanggal');
-		$id_pelelang = $this->session->userdata('id_user');
+		$id_pelelang = null;
 		$id_provinsi = $this->input->post('provinsi');
 		$id_kota = $this->input->post('kota');
 
 		$now = new DateTime();
 		$status = ($now->format('Y-m-d') > $tanggal) ? 1 : 0;
+		if (!empty($_FILES["foto"]["name"])) {
+			$foto = $this->_uploadImage();
+		} else {
+			$foto = $this->input->post('old_foto');
+		}
 
 		$data = array(
 			'judul' => $judul,
@@ -143,6 +147,8 @@ class Lelang extends CI_Controller
 		$where = array('id_lelang' => $id_lelang);
 
 		$this->m_lelang->update_data($where, $data);
+
+
 
 		$row = $this->m_transaksi->tampil_data_transaksi_where($where)->num_rows();
 		if ($status == 1 && $row == 0) {
