@@ -24,7 +24,7 @@ class Transaksi extends CI_Controller
 
 	function do_update()
 	{
-		/*$alasan = $this->input->post('alasan');
+		$alasan = $this->input->post('alasan');
 		$status = $this->input->post('status');
 		$id = $this->uri->segment(3);
 		$where = array('id_status_pelelangan' => $id);
@@ -46,7 +46,6 @@ class Transaksi extends CI_Controller
 		$dataT = array('status' => $statusT);
 		$this->m_transaksi->update_data_transaksi($whereT,$dataT);
 
-		redirect(base_url('transaksi'),'refresh');*/
-		echo $this->uri->segment(3);
+		redirect(base_url('transaksi'),'refresh');
 	}
 }
