@@ -20,6 +20,10 @@ class M_lelang extends CI_Model
         return $this->db->get('lelang');
     }
 
+    function tampil_data_where($where){
+        return $this->db->get_where('lelang', $where);
+    }
+
     function get_trans()
     {
         // return $this->db->get('transaksi');

@@ -8,6 +8,7 @@ class Lelang extends CI_Controller
 		$this->load->model('m_home');
 		$this->load->model('m_search_component');
 		$this->load->model('m_lelang');
+		$this->load->model('m_transaksi');
 		if ($this->session->userdata('status') != "login") {
 			redirect(base_url('login'));
 		}
@@ -71,13 +72,15 @@ class Lelang extends CI_Controller
 			'final_bid' => $final_bid,
 			'total_bidder' => 0,
 			'kategori' => $kategori,
-			'id_pemenang' => null,
+			'id_pemenang' => 0,
 			'id_pelelang' => $id_pelelang,
 			'id_kota' => $id_kota,
 			'id_provinsi' => $id_provinsi
 		);
 
 		$this->m_lelang->tambah_data($data);
+
+		//cek apakah sudah ada transaksi atau belum
 		redirect('lelang');
 	}
 
@@ -116,7 +119,16 @@ class Lelang extends CI_Controller
 		$where = array('id_lelang' => $id_lelang);
 
 		$this->m_lelang->update_data($where, $data);
-		redirect('lelang');
+
+		$row = $this->m_transaksi->tampil_data_transaksi_where($where)->num_rows();
+		if($status == 1 && $row == 0){
+			$data['data_lelang'] = $this->m_lelang->tampil_data_where($where)->result();
+			foreach ($data['data_lelang'] as $dl) {
+				redirect(base_url('lelang/do_add_transaksi/'.$id_lelang.'/'.$dl->id_pelelang.'/'.$dl->id_pemenang),'refresh');
+			}
+		}else{
+			redirect('lelang');	
+		}
 	}
 
 	function do_delete()
@@ -135,5 +147,63 @@ class Lelang extends CI_Controller
 			$data .= "<option value='$k[id_kota]'>$k[nama]</option>\n";
 		}
 		echo $data;
+	}
+
+	function do_add_transaksi(){
+		//tambah transaksi
+        $tgl = date('Y-m-d', time());
+        $deadline = date('Y-m-d', strtotime('+6 days', strtotime($tgl)));
+		$data_transaksi = array(
+			'id_transaksi' => null, 
+			'tanggal' => $tgl,
+			'deadline' => $deadline,
+			'status' => 0,
+			'id_lelang' => $this->uri->segment(3)
+		);
+		$this->m_transaksi->tambah_data_transaksi($data_transaksi);
+
+		//cari id transaksi yang baru saja diinput
+		$where = array('id_lelang' => $this->uri->segment(3));
+		$data['transaksi'] = $this->m_transaksi->tampil_data_transaksi_where($where)->result();
+		//tambah status pelelangan untuk pelelang dan pemenang
+		foreach ($data['transaksi'] as $t) {
+			if($this->uri->segment(4)>0){
+				$data_pelelang = array(
+					'id_status_pelelangan' => null, 
+					'id_lelang'=> $this->uri->segment(3),
+					'id_transaksi' => $t->id_transaksi,
+					'id_user' =>  $this->uri->segment(4),
+					'alasan' => "",
+					'status' => 0
+				);	
+			}
+			if($this->uri->segment(5)>0){
+				$data_pemenang = array(
+					'id_status_pelelangan' => null, 
+					'id_lelang'=> $this->uri->segment(3),
+					'id_transaksi' => $t->id_transaksi,
+					'id_user' =>  $this->uri->segment(5),
+					'alasan' => "",
+					'status' => 0
+				);
+			}
+			$this->m_transaksi->tambah_data_status_pelelangan($data_pelelang);
+			$this->m_transaksi->tambah_data_status_pelelangan($data_pemenang);
+		}
+
+		redirect(base_url('lelang'),'refresh');
+	}
+
+	function tes(){
+		$where = array('id_lelang' => 15 );
+		//$this->m_lelang->tampil_data_where($where)->result();
+		//$data['result'] = $this->m_transaksi->tampil_data_transaksi_where($where)->result();
+		//$row = $this->m_transaksi->tampil_data_transaksi_where($where)->num_rows();
+		$row = $this->m_transaksi->tampil_data_transaksi_where($where)->num_rows();
+
+		echo $row;
+		//if($data['result'])
+		
+
 	}
 }
