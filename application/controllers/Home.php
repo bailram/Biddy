@@ -90,6 +90,7 @@ class Home extends CI_Controller
 		} else {
 			$id_lelang = $this->uri->segment(3);
 			$id_pemenang = $this->uri->segment(4);
+			$total_bid = $this->uri->segment(5)+1;
 
 			$where = array('id_lelang' => $id_lelang);
 			$data['result'] = $this->m_home->get_post($where)->result();
@@ -98,7 +99,8 @@ class Home extends CI_Controller
 				$final = $res->final_bid + $res->next_bid;
 				$update_data = array(
 					'final_bid' => $final,
-					'id_pemenang' => $id_pemenang
+					'id_pemenang' => $id_pemenang,
+					'total_bidder' => $total_bid
 				);
 
 				$this->m_lelang->update_data($where, $update_data);

@@ -110,13 +110,14 @@ foreach ($lelang as $l) {
                     <tr>
                         <td>
                             <button type="button" class="btn btn-outline-success col-12"
-                                onclick="window.location.href='<?php echo base_url('home/make_bid/' . $l->id_lelang . '/' . $this->session->userdata('id_user')); ?>'" <?php
-																																																									$whereUserLogin = array('id_user' => $this->session->userdata('id_user'));
-																																																									$data['user_login'] = $this->m_home->get_user_info($whereUserLogin)->result();
-																																																									foreach ($data['user_login'] as $u) {
-																																																										if ($l->status != 0 || $u->is_ban == 1) echo "disabled ";
-																																																									}
-																																																									?>>
+                                onclick="window.location.href='<?php echo base_url('home/make_bid/' . $l->id_lelang . '/' . $this->session->userdata('id_user') . '/' . $l->total_bidder); ?>'" 
+                                <?php
+                                    $whereUserLogin = array('id_user' => $this->session->userdata('id_user'));
+                                    $data['user_login'] = $this->m_home->get_user_info($whereUserLogin)->result();
+                                    foreach ($data['user_login'] as $u) {
+                                    if ($l->status != 0 || $u->is_ban == 1) echo "disabled ";
+                                    }
+                                ?>>
                                 <span>
                                     <i class="fas fa-gavel"></i>&nbsp;Make Bid
                                 </span>
