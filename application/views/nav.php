@@ -7,8 +7,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url('home') ?>">Home <span class="sr-only">(current)</span></a>
+            <li <?php if ($this->uri->segment(1) == "home") {
+            echo 'class="nav-item active" ';
+          } else {
+            echo 'class="nav-item" ';
+          } ?>>
+                <a class="nav-link" href="<?= base_url('home') ?>">Home </a>
             </li>
 
             <li class="nav-item">
@@ -18,36 +22,37 @@
       if ($this->session->userdata('status') == "login") {
         echo ' 
 
-        <li class="nav-item">
-                <a class="nav-link" href="' . base_url('lelang') . '">My Auction</a>
+        <li class="nav-item" >
+            <a class="nav-link" href="' . base_url('lelang') . '">My Auction</a>
             </li>
 
-        <li class="nav-item">
-        <a class="nav-link"href="' . base_url('user/info/' . $this->session->userdata('id_user')) . '">Profile</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="' . base_url('user/info/' . $this->session->userdata('id_user')) . '">Profile</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      
-        <li class="nav-item">
-          <a class="nav-link"href="' . base_url('login/logout') . '">Logout</a>
-          </li>
-       ';
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="' . base_url('login/logout') . '">Logout</a>
+            </li>
+            ';
       } else {
-        echo '  <li class="nav-item">
-          <a class="nav-link"href="' . base_url('login') . '">Login</a>
-        </li>';
+        echo ' <li class="nav-item">
+                <a class="nav-link" href="' . base_url('login') . '">Login</a>
+            </li>';
       }
       if ($this->session->userdata('role') == 1) {
-        echo '  <li class="nav-item">
-          <a class="nav-link"href="' . base_url('admin') . '">Admin</a>
-          </li>';
+        echo ' <li class="nav-item">
+                <a class="nav-link" href="' . base_url('admin') . '">Admin</a>
+            </li>';
       }
       ?>
         </ul>
         <!-- <form action="<?php echo site_url('home/search'); ?>" method="post" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" id="search_product" name="search_product"
-                placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
+                <input class="form-control mr-sm-2" type="search" id="search_product" name="search_product"
+                    placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
     </div>
 </nav>
