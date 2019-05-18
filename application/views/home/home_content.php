@@ -6,7 +6,7 @@ if ($this->db->get_where('lelang', array('kategori' => $this->uri->segment(3)))-
 foreach ($lelang as $l) { ?>
 <div class="row pt-3 pb-3 mb-3" style="width:101.7%; background: #e9ece5">
     <div class="col-md-3">
-        <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="gambar">
+        <img src="<?php echo base_url('upload/' . $l->foto); ?>" class="img-fluid" alt="gambar">
     </div>
     <div class="col-md-6">
         <div class="row h4">
@@ -66,37 +66,37 @@ foreach ($lelang as $l) { ?>
                     ?>
             </h5>
             <!--<div class="col-sm-3">
-                                        <div class="row">
-                                            8
-                                        </div>
-                                        <div class="row">
-                                            <small>Days</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            8
-                                        </div>
-                                        <div class="row">
-                                            <small>Hours</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            8
-                                        </div>
-                                        <div class="row">
-                                            <small>Minutes</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            8
-                                        </div>
-                                        <div class="row">
-                                            <small>Seconds</small>
-                                        </div>
-                                    </div>-->
+                                                            <div class="row">
+                                                                8
+                                                            </div>
+                                                            <div class="row">
+                                                                <small>Days</small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="row">
+                                                                8
+                                                            </div>
+                                                            <div class="row">
+                                                                <small>Hours</small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="row">
+                                                                8
+                                                            </div>
+                                                            <div class="row">
+                                                                <small>Minutes</small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="row">
+                                                                8
+                                                            </div>
+                                                            <div class="row">
+                                                                <small>Seconds</small>
+                                                            </div>
+                                                        </div>-->
         </div>
     </div>
     <div class="col-md-3">
