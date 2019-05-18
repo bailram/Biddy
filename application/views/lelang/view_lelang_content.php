@@ -166,10 +166,12 @@
                         </div>
                         <div class="col">
                             <?php
-                                foreach ($user as $u) {
-                                    echo $u->nama;
+                                $whereU = array('id_user' => $l->id_pemenang);
+                                $data['top_bidder'] = $this->m_home->get_user_info($whereU)->result();
+                                foreach ($data['top_bidder'] as $tb) {
+                                    echo $tb->nama;
                                 }
-                                ?>
+                            ?>
                         </div>
                     </div>
                     <div class="row mr-1 float-right">

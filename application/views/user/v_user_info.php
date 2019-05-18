@@ -23,7 +23,7 @@
 <?php foreach ($lelang as $l) { ?>
     <div class="row pt-3 pb-3 mb-3">
         <div class="col-md-3">
-            <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="gambar">
+            <img src="<?php echo base_url('upload/' . $l->foto); ?>" class="img-fluid" alt="gambar">
         </div>
         <div class="col-md-6">
             <div class="row h4">

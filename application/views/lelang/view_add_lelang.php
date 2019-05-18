@@ -53,7 +53,6 @@
                 <h5 class="card-header">Buat Lelang</h5>
                 <div class="card-body">
                     <form action="<?php echo base_url('lelang/do_add'); ?>" method="post" enctype="multipart/form-data">
-                        >
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">

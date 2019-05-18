@@ -42,8 +42,8 @@ foreach ($lelang as $l) {
             </span>
         </div>
         <!-- Image -->
-        <div class="row container mt-4 mb-4">
-            <img src="<?php echo base_url('upload/' . $l->foto); ?>" class="img-fluid" alt="gambar">
+        <div class="row container mt-4 mb-4 justify-content-center">
+            <img src="<?php echo base_url('upload/' . $l->foto); ?>" class="img-fluid" alt="gambar" style="height: 300px;">
         </div>
         <h5>
             Deskripsi :

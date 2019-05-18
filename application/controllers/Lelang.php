@@ -34,8 +34,8 @@ class Lelang extends CI_Controller
 	function index()
 	{
 		$id = $this->session->userdata('id_user');
-		$where = array('id_user' => $id);
-		$data['user'] = $this->m_home->get_user_info($where)->result();
+		//$where = array('id_user' => $id);
+		//$data['user'] = $this->m_home->get_user_info($where)->result();
 		$where = array('id_pelelang' => $id);
 		$data['lelang'] =  $this->m_home->get_data_lelang_user($where)->result();
 

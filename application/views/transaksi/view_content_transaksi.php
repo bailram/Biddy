@@ -38,7 +38,7 @@
 
                 <div class="row pt-3 pb-3 mb-3">
                     <div class="col-md-3">
-                        <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="gambar">
+                        <img src="<?php echo base_url('upload/' . $l->foto); ?>" class="img-fluid" alt="gambar">
                     </div>
                     <div class="col-md-9">
                         <div class="row h4">
@@ -62,7 +62,7 @@
                                         else if($st->status == 3){
                                             echo "Waiting";
                                         }  
-                                    }
+                                    
                                 ?>
                             </span>
                         </div>
@@ -76,7 +76,7 @@
                             ?>
                         </div>
                         <div class="row mt-1">
-                            <form class="form-inline" action="<?php echo base_url('transaksi/do_update/'.$t->id_status_pelelangan);?>" method="post">
+                            <form class="form-inline" action="<?php echo base_url('transaksi/do_update/'.$t->id_status_pelelangan.'/'.$st->id_transaksi.'/'.$st->status);}?>" method="post">
                               <div class="form-group mb-2">
                                 <input type="text" class="form-control" name="alasan" placeholder="alasan" 
                                     value="<?php if($t->status > 0 ){ echo $t->alasan;} ?>">
