@@ -2,22 +2,31 @@
     <h3 class="text-center mb-3">User Profile</h3>
     <div class="row container">
         <div class="col-4 mr-2">
-            <img src="<?php echo base_url('images/no_image.png'); ?>" class="img-fluid" alt="Iklan">
+            <img src="<?php echo base_url('upload/' . $u->foto); ?>" class="img-fluid" alt="Iklan">
         </div>
-        <div class="col-7">
+        <div class="<?php if ($this->session->userdata('id_user') == $u->id_user ) { echo "col-5";}else{ echo "col-7";} ?>">
             <h4 class="border-bottom pb-2">
                 <?php echo $u->nama ?>
                 <?php if ($u->is_ban == 1) {
                  echo "<span class='badge badge-danger'>BANNED</span>";
              } ?>
-         </h4>
-         <p>
-            <?php echo $u->alamat ?><br>
-            <?php echo $u->email ?><br>
-            <?php echo $u->no_hp ?><br>
-        </p>
-
-    </div>
+            </h4>
+            <p>
+                <?php echo $u->alamat ?><br>
+                <?php echo $u->email ?><br>
+                <?php echo $u->no_hp ?><br>
+            </p>
+        </div>
+        <?php if ($this->session->userdata('id_user') == $u->id_user ) {
+         echo '
+         <div class="col-2">
+            <a class="btn btn-primary mt-2 mr-2" href="'.base_url('user/update/'.$u->id_user).'"
+                role="button">
+                <i class="fas fa-pen">&nbsp;Edit</i>
+            </a>
+        </div>';
+        } ?>
+        
 </div>
 <?php } ?>
 <?php foreach ($lelang as $l) { ?>

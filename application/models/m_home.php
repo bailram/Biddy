@@ -82,6 +82,11 @@ class M_home extends CI_Model
     {
         return $this->db->get('lelang')->num_rows();
     }
+
+    function update_data_user($where,$data){
+        $this->db->where($where);
+        $this->db->update('user',$data);
+    }
 }
 
 /* End of file M_home.php */
