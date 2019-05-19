@@ -63,7 +63,7 @@
                                 </span>
                             </div>
                             <input type="text" name="nama" title="judul" class="form-control login-input"
-                                placeholder="Judul iklan" aria-label="Sizing example input"
+                                placeholder="Nama" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" value="<?php echo $u->nama ?>" />
                         </div>
 
@@ -74,7 +74,7 @@
                                 </span>
                             </div>
                             <input type="text" name="alamat" title="judul" class="form-control login-input"
-                                placeholder="Judul iklan" aria-label="Sizing example input"
+                                placeholder="Alamat" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" value="<?php echo $u->alamat ?>" />
                         </div>
 
@@ -85,7 +85,7 @@
                                 </span>
                             </div>
                             <input type="email" name="email" title="judul" class="form-control login-input"
-                                placeholder="Judul iklan" aria-label="Sizing example input"
+                                placeholder="email" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" value="<?php echo $u->email ?>" />
                         </div>
 
@@ -96,7 +96,7 @@
                                 </span>
                             </div>
                             <input type="text" name="no_hp" title="final_bid" class="form-control login-input"
-                                placeholder="Nominal Next Bid" aria-label="Sizing example input"
+                                placeholder="Nomor Handphone" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" value="<?php echo $u->no_hp ?>" />
                         </div>
 
@@ -107,7 +107,7 @@
                                 </span>
                             </div>
                             <input type="text" name="username" title="judul" class="form-control login-input"
-                                placeholder="Judul iklan" aria-label="Sizing example input"
+                                placeholder="Username" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" value="<?php echo $u->username ?>" />
                         </div>
 
@@ -127,7 +127,8 @@
 
                         <button type="submit" class="btn btn-primary">Save</button>
 
-                        <button type="button" class="btn btn-success" onclick="window.location.href='<?php echo base_url('user/change_password/' . $u->id_user); ?>'">
+                        <button type="button" class="btn btn-success"
+                            onclick="window.location.href='<?php echo base_url('user/change_password/' . $u->id_user); ?>'">
                             Change Password
                         </button>
                     </form>

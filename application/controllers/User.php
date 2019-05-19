@@ -45,7 +45,8 @@ class User extends CI_Controller
 		$this->load->view('user/v_index_user', $data);
 	}
 
-	function update(){
+	function update()
+	{
 		$id = $this->uri->segment(3);
 		$where = array('id_user' => $id);
 		$data['user'] = $this->m_home->get_user_info($where)->result();
@@ -53,7 +54,8 @@ class User extends CI_Controller
 		$this->load->view('user/v_user_update.php', $data);
 	}
 
-	function do_update(){
+	function do_update()
+	{
 		$id = $this->uri->segment(3);
 		$nama =  $this->input->post('nama');
 		$alamat = $this->input->post('alamat');
@@ -63,15 +65,15 @@ class User extends CI_Controller
 		if (!empty($_FILES["foto"]["name"])) {
 			$foto = $this->_uploadImage();
 		} else {
-			if($_FILES["foto"]["name"] != $foto = $this->input->post('old_foto')){
+			if ($_FILES["foto"]["name"] != $foto = $this->input->post('old_foto')) {
 				$foto = $_FILES["foto"]["name"];
-			}else{
-				$foto = $this->input->post('old_foto');	
+			} else {
+				$foto = $this->input->post('old_foto');
 			}
 		}
 
 		$data = array(
-			'id_user' => $id, 
+			'id_user' => $id,
 			'nama' => $nama,
 			'alamat' => $alamat,
 			'no_hp' => $no_hp,
@@ -81,34 +83,35 @@ class User extends CI_Controller
 		);
 
 		$where = array('id_user' => $id);
-		$this->m_home->update_data_user($where,$data);
+		$this->m_home->update_data_user($where, $data);
 
-		redirect('user/info/'.$id,'refresh');
-		
+		redirect('user/info/' . $id, 'refresh');
 	}
 
-	function change_password(){
+	function change_password()
+	{
 		$this->load->view('nav');
 		$this->load->view('user/change_password.php');
 	}
 
-	function do_change_password(){
+	function do_change_password()
+	{
 		$id = $this->uri->segment(3);
 		$password_lama =  $this->input->post('password_lama');
 		$password_baru =  $this->input->post('password_baru');
-		
+
 		$where = array(
 			'id_user' => $id,
 			'password' => $password_lama
 		);
 
-		if($this->m_home->get_user_info($where)->num_rows() == 1) {
-			$data = array('password' => $password_baru );
+		if ($this->m_home->get_user_info($where)->num_rows() == 1) {
+			$data = array('password' => $password_baru);
 
-			$this->m_home->update_data_user($where,$data);
-			redirect('user/info/'.$id,'refresh');
-		}else{
-			redirect('user/change_password/'.$id.'/1','refresh');
+			$this->m_home->update_data_user($where, $data);
+			redirect('user/info/' . $id, 'refresh');
+		} else {
+			redirect('user/change_password/' . $id . '/1', 'refresh');
 		}
 	}
 }
