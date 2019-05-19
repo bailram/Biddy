@@ -20,6 +20,10 @@ class M_lelang extends CI_Model
         return $this->db->get('lelang');
     }
 
+    function tampil_data_where($where){
+        return $this->db->get_where('lelang', $where);
+    }
+
     function get_trans()
     {
         // return $this->db->get('transaksi');
@@ -30,9 +34,9 @@ class M_lelang extends CI_Model
         return $query->result();
     }
 
-    function hapus_data($where, $table)
+    function hapus_data($where)
     {
         $this->db->where($where);
-        $this->db->delete($table);
+        $this->db->delete('lelang');
     }
 }

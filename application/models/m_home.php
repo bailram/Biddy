@@ -9,6 +9,11 @@ class M_home extends CI_Model
         return $this->db->get('lelang');
     }
 
+    function tampil_data_test($data, $offset)
+    {
+        return $this->db->get('lelang', $data, $offset);
+    }
+
     function tampil_data_where_kategori($id)
     {
         $where = array('kategori' => $id);
@@ -20,9 +25,11 @@ class M_home extends CI_Model
         return $this->db->get('provinsi');
     }
 
-    function get_kota()
+    function get_kota($id_prov)
     {
-        return $this->db->get('kota');
+        $this->db->where('id_prov', $id_prov);
+        $result =  $this->db->get('kota');
+        return $result->result_array();
     }
 
     function get_post($where)
@@ -35,6 +42,22 @@ class M_home extends CI_Model
         $this->db->like('judul', $key);
         return $this->db->get('lelang');
     }
+
+    function get_search_with_location($id_provinsi, $id_kota)
+    {
+        $this->db->where('id_provinsi', $id_provinsi);
+        $this->db->where('id_kota', $id_kota);
+        return $this->db->get('lelang');
+    }
+
+    function get_search_with_location_and_key($key, $id_provinsi, $id_kota)
+    {
+        $this->db->like('judul', $key);
+        $this->db->where('id_provinsi', $id_provinsi);
+        $this->db->where('id_kota', $id_kota);
+        return $this->db->get('lelang');
+    }
+
     function get_user_info($where)
     {
         return $this->db->get_where('user', $where);
@@ -53,6 +76,11 @@ class M_home extends CI_Model
     function get_data_lelang_user($where)
     {
         return $this->db->get_where('lelang', $where);
+    }
+
+    function jumlah_data()
+    {
+        return $this->db->get('lelang')->num_rows();
     }
 }
 
